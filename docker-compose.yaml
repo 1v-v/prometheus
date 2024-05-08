@@ -1,0 +1,35 @@
+services:
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    restart: unless-stopped
+    ports:
+      - 9090:9090
+    volumes:
+      - ./prometheus_config:/etc/prometheus
+      - prometheus-storage:/prometheus
+
+  grafana:
+    image: grafana/grafana-enterprise
+    container_name: grafana
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    volumes:
+      - grafana-storage:/var/lib/grafana
+
+
+  yace:
+    image: ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.59.0
+    container_name: yace
+    restart: always
+    ports:
+      - '5000:5000'
+    
+    volumes:
+      - ./yace-config.yaml:/tmp/config.yml
+      - ./.aws:/exporter/.aws:ro
+
+volumes:
+  grafana-storage: {}
+  prometheus-storage: {}
