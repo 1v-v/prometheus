@@ -13,4 +13,42 @@ discovery:
           statistics: [Average, Sum]
         - name: NetworkOut
           statistics: [Average, Sum]
-        
+
+    - type: AWS/RDS
+      regions:
+        - ap-northeast-1
+      period: 300
+      length: 300
+      metrics:
+        - name: CPUUtilization
+          statistics: [Maximum]
+        - name: DatabaseConnections
+          statistics: [Sum]
+        - name: FreeableMemory
+          statistics: [Average]
+
+    - type: AWS/ApplicationELB
+      regions:
+        - ap-northeast-1
+      period: 300
+      length: 300
+      metrics:
+        - name: HealthyHostCount
+          statistics: [Sum]
+        - name: RequestCount
+          statistics: [Average]
+        - name: TargetResponseTime
+          statistics: [Average]
+        - name: ActiveConnectionCount
+          statistics: [Sum]
+
+    - type: AWS/ECS
+      regions:
+        - ap-northeast-1
+      period: 300
+      length: 300
+      metrics:
+        - name: CPUUtilization
+          statistics: [Average, Maximum]
+        - name: MemoryUtilization
+          statistics: [Average, Maximum]

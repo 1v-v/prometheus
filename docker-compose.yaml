@@ -22,7 +22,7 @@ services:
   yace:
     image: ghcr.io/nerdswords/yet-another-cloudwatch-exporter:v0.59.0
     container_name: yace
-    restart: always
+    restart: unless-stopped
     ports:
       - '5000:5000'
     

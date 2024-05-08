@@ -8,7 +8,7 @@ sudo systemctl start docker
 
 sudo dnf install -y wget
 
-sudo wget https://raw.githubusercontent.com/1v-v/stuff/main/prometheus/prometheus.repo
+sudo wget https://raw.githubusercontent.com/1v-v/prometheus/main/prometheus.repo
 sudo mv prometheus.repo  /etc/yum.repos.d
 
 sudo dnf -y install node_exporter
@@ -20,5 +20,6 @@ sudo firewall-cmd --reload
 
 
 sudo mkdir -p  prometheus/prometheus_config 
-sudo wget --directory-prefix=prometheus/prometheus_config  https://raw.githubusercontent.com/1v-v/stuff/main/prometheus/prometheus.yml
-sudo wget --directory-prefix=prometheus https://raw.githubusercontent.com/1v-v/stuff/main/prometheus/docker-compose.yaml
+sudo wget --directory-prefix=prometheus/prometheus_config  https://raw.githubusercontent.com/1v-v/prometheus/main/prometheus.yml
+sudo wget --directory-prefix=prometheus https://raw.githubusercontent.com/1v-v/prometheus/main/docker-compose.yaml
+sudo wget --directory-prefix=prometheus https://raw.githubusercontent.com/1v-v/prometheus/main/yace-config.yaml
